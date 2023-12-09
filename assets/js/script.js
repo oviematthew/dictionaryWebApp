@@ -58,16 +58,15 @@ speakButton.addEventListener("click", function() {
                 const country = data.address.country;
                 const countryFlagCode = data.address.country.toLowerCase();
 
-                // Update the paragraph with the country name
-                document.getElementById('locationParagraph').textContent = `Country: ${country}`;
 
                 // Fetch the country flag
                 const flagUrl = `https://www.countryflags.com/wp-content/uploads/${countryFlagCode}-flag-png-large.png`;
                 document.getElementById('countryFlag').src = flagUrl;
                 document.getElementById('countryFlag').alt = `Flag of ${country}`;
             } else {
-                // Display an error message if the response is not as expected
-                document.getElementById('locationParagraph').textContent = 'Error getting country information.';
+                
+                // use default image if not displayed properly
+                document.getElementById('countryFlag').src = '/assets/anonymous.jpg';
             }
         })
         .catch(error => {
