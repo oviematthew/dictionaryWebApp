@@ -1,3 +1,15 @@
+// Function to get current date
+function formatDate(date) {
+    const options = { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' };
+    return new Date(date).toLocaleDateString('en-US', options);
+}
+
+// Get the current date and set it in the specified <p> tag
+const currentDate = new Date();
+const formattedDate = formatDate(currentDate);
+document.getElementById('todaysDate').textContent = formattedDate;
+
+// Word API
 var word = 'teacher';
 var apiUrl = `https://api.dictionaryapi.dev/api/v2/entries/en/${encodeURIComponent(word)}`;
 
@@ -17,32 +29,28 @@ fetch(apiUrl)
         console.error('Error:', error.message);
     });
 
-
-
-    // Get the text area and speak button elements
+// Get the text area and speak button elements
 let textArea = document.getElementById("text");
 let speakButton = document.getElementById("speak-button");
 
 // Add an event listener to the speak button
-speakButton.addEventListener("click", function() {
-  // Get the text from the text area
-  let text = textArea.value;
+speakButton.addEventListener("click", function () {
+    // Get the text from the text area
+    let text = textArea.value;
 
-  // Create a new SpeechSynthesisUtterance object
-  let utterance = new SpeechSynthesisUtterance();
+    // Create a new SpeechSynthesisUtterance object
+    let utterance = new SpeechSynthesisUtterance();
 
-  // Set the text and voice of the utterance
-  utterance.text = text;
-  utterance.voice = window.speechSynthesis.getVoices()[5];
+    // Set the text and voice of the utterance
+    utterance.text = text;
+    utterance.voice = window.speechSynthesis.getVoices()[5];
 
-  // Speak the utterance
-  window.speechSynthesis.speak(utterance);
+    // Speak the utterance
+    window.speechSynthesis.speak(utterance);
 });
 
-
-
- // Function to update the paragraph with the user's country and flag
- function updateLocation(position) {
+// Function to update the paragraph with the user's country and flag
+function updateLocation(position) {
     const latitude = position.coords.latitude;
     const longitude = position.coords.longitude;
 
@@ -58,27 +66,30 @@ speakButton.addEventListener("click", function() {
                 const country = data.address.country;
                 const countryFlagCode = data.address.country.toLowerCase();
 
-
                 // Fetch the country flag
                 const flagUrl = `https://www.countryflags.com/wp-content/uploads/${countryFlagCode}-flag-png-large.png`;
-                document.getElementById('countryFlag').src = flagUrl;
-                document.getElementById('countryFlag').alt = `Flag of ${country}`;
+
+                // Change the flag image
+                let flagImg = document.getElementById('countryFlag'); 
+                flagImg.src = flagUrl;
+                flagImg.alt = `Flag of ${country}`;
             } else {
-                
-                // use default image if not displayed properly
-                document.getElementById('countryFlag').src = '/assets/anonymous.jpg';
+                // Use default image if not displayed properly
+                let flagImg = document.getElementById('countryFlag');
+                flagImg.src = '/assets/anonymous.jpg';
+                flagImg.alt = 'Anonymous Flag';
             }
         })
         .catch(error => {
             // Display an error message if there is an issue with the API request
-            document.getElementById('locationParagraph').textContent = 'Error getting country information.' + error;
+           console.log(error)
         });
 }
 
 // Function to handle errors in geolocation
 function handleLocationError(error) {
     let errorMessage = 'Error getting location: ';
-    switch(error.code) {
+    switch (error.code) {
         case error.PERMISSION_DENIED:
             errorMessage += 'User denied the request for Geolocation.';
             break;

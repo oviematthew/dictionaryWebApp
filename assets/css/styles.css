@@ -52,6 +52,14 @@ table {
 }
 
 /* start editing */
+html {
+    scroll-behavior: smooth;
+}
+
+body{
+    font-family: 'Poppins', sans-serif;
+}
+
 .top-section {
     height: max-content;
     padding: 10px 0;
@@ -68,8 +76,8 @@ header {
 }
 
 .countryFlag {
-    width: 50px;
-    height: 30px;
+    width: 30px;
+    height: 20px;
 }
 
 .nav-items {
@@ -100,3 +108,113 @@ li > a:hover {
 
 
 /* hero section */
+.hero-section{
+    height: max-content;
+    padding: 50px;
+}
+
+
+
+.hero-left {
+    display: flex;
+    gap: 25px;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.hero-right{
+    display: flex;
+    justify-content: center;
+}
+
+.hero-h1{
+    font-family: 'Rethink Sans', sans-serif;
+    color: var(--secondary-color);
+    font-weight: 700;
+    font-size: 35px;
+    margin-bottom: 15px;
+}
+.hero-p{
+    line-height: 1.5;
+    font-family: 'Poppins', sans-serif;
+
+}
+
+.learnBtn {
+    width: max-content;
+    padding: 12px;
+    background-color: var(--primary-color);
+    color: var(--white);
+    border: none;
+    border-radius: 10px;
+    transition: all .3s ease-in-out;
+}
+
+.learnBtn:hover {
+    background-color: var(--secondary-color);
+    scale: .9;
+}
+
+@media only screen and (max-width: 990px)  {
+    .hero-left{
+        margin-bottom: 30px;
+    }
+}
+
+
+/* Cards section */
+.centerElement {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.peopleImage{
+    width: 600px;
+    height: 400px;
+    border-radius: 20px;
+}
+
+@media only screen and (max-width: 1200px)  {
+    .peopleImage{
+        width: 450px;
+        height: 300px;
+        border-radius: 20px;
+    }
+}
+
+@media only screen and (max-width: 800px)  {
+    .peopleImage{
+        width: 350px;
+        height: 300px;
+        border-radius: 20px;
+    }
+}
+
+
+/* word of the day section */
+.cardSection {
+    height: max-content;
+    padding: 50px;
+}
+
+.h2-header {
+    font-family: 'Rethink Sans', sans-serif;
+    font-size: 25px;
+    color: var(--secondary-color);
+    margin-bottom: 10px;
+}
+
+.WodRow {
+    border: 1px dashed;
+    padding: 30px;
+}
+
+#wordOfTheDay {
+    margin: 10px 0;
+    font-size: 40px;
+    color: var(--primary-color);
+}
+#partOfSpeech {
+    margin: 10px 0;
+}
+

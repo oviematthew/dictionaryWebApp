@@ -17,6 +17,11 @@
     <!-- manifest file -->
     <link rel="manifest" href="manifest.json">
 
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&family=Rethink+Sans:wght@600;700&display=swap" rel="stylesheet">
+
     <link rel="apple-touch-icon" href="assets/images/apple-icon-180.png">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <link rel="apple-touch-startup-image" href="assets/images/apple-splash-2048-2732.jpg" media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
@@ -59,8 +64,7 @@
 
                 <div class="nav-items">
                     <ul>
-                        <li> <a class="active-nav nav-item" href="./index.html"> Home</a></li>
-                        <li><a class="nav-item" href="./learn.html">Learn Word</a></li>
+                        <li><a class="nav-item" href="#search">Search Word</a></li>
                     </ul>
                     <img class="countryFlag" src="./assets/anonymous.jpg" id="countryFlag" alt="Country-Flag">
                 </div>
@@ -69,14 +73,47 @@
     </section>
 
         <!-- Hero Section -->
-        <section class="bottom section">
+        <section class="hero-section">
             <div class="container">
-                <div class="col-12 col-lg-6">
-                    <h1>
-                        EngliTionary
-                    </h1>
+                <div class="row">
+                    <!-- left -->
+                    <div class="col-12 col-lg-6 hero-left">
+                        <h1 class="hero-h1">
+                            Bridging Languages, Connecting Worlds
+                        </h1>
+                        <p class="hero-p">
+                            In today's interconnected world, effective communicastion knows no bounds, our app is your gateway to adding more than just a new english word to your vocabulary. Unlock a world of an efforless english learning experience!.
+                        </p>
+
+                        <button class="learnBtn" onclick="window.location.href = 'learn.html';">
+                           Learn New Word
+                        </button>
+                    </div>
+                    <!-- right -->
+                    <div class="col-12 col-lg-6 hero-right">
+                        <img class="peopleImage" src="./assets/images/people-learning.jpg" alt="people learning">
+                    </div>
                 </div>
-                <div class="col-12 col-lg-6"></div>
+                
+            </div>
+        </section>
+
+        <!-- Word of the day section -->
+        <section class="cardSection">
+            <div class="container">
+                <div class="row WodRow">
+                    <h2 class="h2-header">
+                        WORD OF THE DAY
+                        (<span id="todaysDate">
+                        </span>)
+                    </h2>
+                    
+                    <p id="wordOfTheDay">Confusion</p>
+                    <p id="partOfSpeech">Noun</p>
+                    <p id="">Definition</p>
+                    
+                </div>
+               </div>
             </div>
         </section>
         
