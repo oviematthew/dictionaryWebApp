@@ -12,12 +12,12 @@ class wordDB {
             try {
                 // Your web app's Firebase configuration
                 const firebaseConfig = {
-                    apiKey: "AIzaSyBdA-WuwOCoDfYaFyBQOLdFwzx9Ls3vg8E",
-                    authDomain: "games-app-6e2a9.firebaseapp.com",
-                    projectId: "games-app-6e2a9",
-                    storageBucket: "games-app-6e2a9.appspot.com",
-                    messagingSenderId: "658683972987",
-                    appId: "1:658683972987:web:4b684858a8439ca13d41de"
+                    apiKey: "AIzaSyAyLeAR1_4MyzNiDJAO9UFu7HFBtoXIYls",
+                    authDomain: "pwa-project-f6a87.firebaseapp.com",
+                    projectId: "pwa-project-f6a87",
+                    storageBucket: "pwa-project-f6a87.appspot.com",
+                    messagingSenderId: "805738882878",
+                    appId: "1:805738882878:web:14f6ef7f0d6184cf936e6f"
                 };
 
                 // Initialize Firebase
@@ -40,26 +40,24 @@ class wordDB {
         });
     }
 
-    add(songTitle, artistName, likes) {
-        return addDoc(collection(this.db, 'songs'), {
-            songTitle,
-            artistName,
-            likes,
+    add(word, definition, figOfSpeech, transcription) {
+        return addDoc(collection(this.db, 'words'), {
+            word,
+            definition,
+            figOfSpeech,
+            transcription,
         });
     }
 
     remove(docId) {
-        return deleteDoc(doc(this.db, 'songs', docId));
+        return deleteDoc(doc(this.db, 'words', docId));
     }
 
-    getAllSongs() {
-        return getDocs(collection(this.db, 'songs'));
+    getAllWords() {
+        return getDocs(collection(this.db, 'words'));
     }
 
-    updateLikes(docId, likes) {
-        const songRef = doc(this.db, 'songs', docId);
-        return updateDoc(songRef, { likes });
-    }
+    
 }
 
 const wordsDB = new wordDB();

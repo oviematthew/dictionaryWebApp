@@ -133,7 +133,7 @@
                     <!-- definition -->
                     <p id="wordDefinition"></p>
 
-                    <button id="addBtn" class="learnBtn" onclick="location.reload();">
+                    <button class="learnBtn" onclick="location.reload();">
                         Fetch New Word
                     </button>
                     
@@ -147,17 +147,17 @@
                 <div class="row">
                     <div class="col-12">
                         <h2 class="h2-header">
-                            Search New Word
+                            Word List
                         </h2>
-                        <input class="inputField" type="text" placeholder="type word here">
-                        <button class="learnBtn" onclick="search()">
+                        <input id="wordToSearch" class="inputField" type="text" placeholder="type word here">
+                        <button id="addToSearchBtn" class="learnBtn" onclick="addWord()">
                             Search
                         </button>
                         <img src="./assets/images/volume-high-solid.svg" alt="">
                     </div>
                 </div>
                 <div class="row">
-                    .
+                    <div class="wordsDiv"></div>
                 </div>
             </div>
         </section>
@@ -166,7 +166,7 @@
    
 
     <!-- Scripts -->
-    <script src="./assets/js/script.js"></script>
+    <script type="module" src="./assets/js/script.js"></script>
     <script src="./service-worker.js"></script>
     <script type="module" src="./assets/js/db.js"></script>
     
