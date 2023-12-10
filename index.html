@@ -147,17 +147,47 @@
                 <div class="row">
                     <div class="col-12">
                         <h2 class="h2-header">
-                            Word List
+                            Search Words
                         </h2>
                         <input id="wordToSearch" class="inputField" type="text" placeholder="type word here">
                         <button id="addToSearchBtn" class="learnBtn" onclick="addWord()">
                             Search
                         </button>
-                        <img src="./assets/images/volume-high-solid.svg" alt="">
                     </div>
                 </div>
+                <!-- word list -->
                 <div class="row">
-                    <div class="wordsDiv"></div>
+                    <div style="margin-top: 20px;" class="wordsDiv">
+                        <h2 class="h2-header">
+                            Word List
+                        </h2>
+                        <p style="margin-top: 10px;">Hardware</p>
+                        <p style="margin-top: 10px;">Fixtures, equipment, tools and devices used for general-purpose construction and repair of a structure or object. </p>
+                        <button id="addToSearchBtn" class="learnBtn" onclick="addToFavorites()" style="margin-top: 10px;">Add To Favorites</button>
+                    </div>
+                </div>
+                <!-- Saved Items -->
+                <div class="row">
+                    <h2 class="h2-header" style="margin-top: 20px;">
+                        Saved Words
+                    </h2>
+
+                    <div class="flex" style="display: flex; gap: 10px;">
+                        <div>
+                            <i class="fa-solid fa-bookmark"></i>
+                        </div>
+                        <div>
+                            <p id="name">keyboard</p>
+                            <p id="definition">Fixtures, equipment, tools and devices used for general-purpose construction and repair of a structure or object.</p>
+                            <p id="transcription">[/ˈhɑːdˌwɛə/]</p>
+                            <p id="figOfSpeech">Noun</p>
+                            <img src="./assets/images/trash-can-solid.svg" style="width: 15px;" alt="delete" onclick="deleteItem()">
+                        </div>
+                       
+                    </div>
+
+                    
+                    
                 </div>
             </div>
         </section>
