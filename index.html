@@ -54,6 +54,9 @@
     <link rel="apple-touch-startup-image" href="assets/images/apple-splash-1334-750.jpg" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)">
     <link rel="apple-touch-startup-image" href="assets/images/apple-splash-640-1136.jpg" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
     <link rel="apple-touch-startup-image" href="assets/images/apple-splash-1136-640.jpg" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)">
+
+    <!-- font awesome -->
+    <script src="https://kit.fontawesome.com/344589b924.js" crossorigin="anonymous"></script>
 </head>
 <body>
         <!-- header -->
@@ -98,32 +101,68 @@
             </div>
         </section>
 
-        <!-- Word of the day section -->
-        <section class="cardSection">
+        <!-- Featured Words section -->
+        <section class="featuredWordsSection">
             <div class="container">
                 <div class="row WodRow">
+                    
                     <h2 class="h2-header">
-                        WORD OF THE DAY
-                        (<span id="todaysDate">
-                        </span>)
+                        Featured Word
+                        <br>
+                        <span id="todaysDate">
+                        </span>
                     </h2>
                     
-                    <p id="wordOfTheDay">Confusion</p>
-                    <p id="partOfSpeech">Noun</p>
-                    <p id="">Definition</p>
+                    <!-- Word -->
+                    <p class="featuredWrd">
+                        <span id="featuredWord"></span>
+                        <span class="wordPronounce"><i id="speakBtn" class="fa-solid fa-volume-high"></i></span>
+                    </p>
+                    
+                    <!-- part of speech -->
+                    <p class="pOfSpeech">
+                        <span id="partOfSpeech"></span>
+                    </p>
+
+
+                    <!-- transcription -->
+                    <p>
+                        [<span id="transcription"></span>]
+                    </p>
+                    
+                    <!-- definition -->
+                    <p id="wordDefinition"></p>
+
+                    <button id="addBtn" class="learnBtn" onclick="location.reload();">
+                        Fetch New Word
+                    </button>
                     
                 </div>
                </div>
             </div>
         </section>
+
+        <section id="search" class="searchSection">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <h2 class="h2-header">
+                            Search New Word
+                        </h2>
+                        <input class="inputField" type="text" placeholder="type word here">
+                        <button class="learnBtn" onclick="search()">
+                            Search
+                        </button>
+                        <img src="./assets/images/volume-high-solid.svg" alt="">
+                    </div>
+                </div>
+                <div class="row">
+                    .
+                </div>
+            </div>
+        </section>
         
-        <div class="container">
-            <div id="text-to-speech">
-                <textarea id="text"></textarea>
-                <button id="speak-button">Speak</button>
-              </div>
-              
-        </div>
+        
    
 
     <!-- Scripts -->

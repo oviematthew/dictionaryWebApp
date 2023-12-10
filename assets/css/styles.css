@@ -191,8 +191,8 @@ li > a:hover {
 }
 
 
-/* word of the day section */
-.cardSection {
+/* featured word section */
+.featuredWordsSection {
     height: max-content;
     padding: 50px;
 }
@@ -207,14 +207,40 @@ li > a:hover {
 .WodRow {
     border: 1px dashed;
     padding: 30px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
 }
 
-#wordOfTheDay {
+.featuredWrd {
     margin: 10px 0;
+}
+
+#featuredWord {
     font-size: 40px;
     color: var(--primary-color);
 }
-#partOfSpeech {
+.pOfSpeech {
     margin: 10px 0;
 }
 
+#wordDefinition {
+    margin: 20px 0;
+}
+
+#todaysDate {
+    font-family: 'Poppins', sans-serif;
+    font-size: 15px;
+}
+
+/* Search New WOrd */
+.searchSection{
+    height: max-content;
+    padding: 50px;
+}
+
+.inputField {
+    border-radius: 10px;
+    padding: 10px;
+    border: 1px solid var(--black);
+}

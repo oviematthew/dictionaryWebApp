@@ -9,9 +9,55 @@ const currentDate = new Date();
 const formattedDate = formatDate(currentDate);
 document.getElementById('todaysDate').textContent = formattedDate;
 
-// Word API
-var word = 'teacher';
-var apiUrl = `https://api.dictionaryapi.dev/api/v2/entries/en/${encodeURIComponent(word)}`;
+
+
+// Word of the Day function
+let englishWords = [
+    "apple", "banana", "orange", "grape", "strawberry", "watermelon", "blueberry", "kiwi", "peach", "mango",
+    "dog", "cat", "bird", "fish", "rabbit", "hamster", "turtle", "parrot", "snake", "lizard",
+    "car", "bus", "train", "bicycle", "motorcycle", "airplane", "boat", "taxi", "subway", "truck",
+    "happy", "sad", "angry", "excited", "bored", "surprised", "tired", "relaxed", "nervous", "confused",
+    "book", "movie", "music", "art", "dance", "theater", "poetry", "photography", "sculpture", "painting",
+    "mountain", "beach", "forest", "desert", "river", "lake", "ocean", "island", "cave", "canyon",
+    "computer", "phone", "tablet", "keyboard", "mouse", "monitor", "printer", "router", "software", "hardware",
+    "coffee", "tea", "water", "juice", "soda", "milk", "smoothie", "wine", "beer", "cocktail",
+    "summer", "winter", "spring", "autumn", "sun", "rain", "snow", "wind", "clouds", "storm",
+    "math", "science", "history", "language", "art", "music", "physical_education", "geography", "literature", "computer_science",
+    "friend", "family", "colleague", "neighbor", "teacher", "boss", "classmate", "stranger", "customer", "client",
+    "zebra", "xylophone", "waffle", "violet", "umbrella", "tangerine", "sunset", "rocket", "quasar", "puzzle",
+    "octopus", "noodle", "moose", "lighthouse", "kangaroo", "jazz", "hologram", "giraffe", "festival", "elephant",
+  ];
+
+  function getRandomElement(arr) {
+    const randomIndex = Math.floor(Math.random() * arr.length);
+    return arr[randomIndex];
+}
+
+
+
+var partOfSpeech = document.getElementById('partOfSpeech')
+var wordDefinition = document.getElementById('wordDefinition')
+var transcription = document.getElementById('transcription')
+var word =  document.getElementById('featuredWord');
+var currentWord = getRandomElement(englishWords)
+word.textContent = currentWord
+var speakBtn = document.getElementById('speakBtn')
+
+// Add an event listener to the speak button
+speakBtn.addEventListener("click", function () {
+    
+    // Create a new SpeechSynthesisUtterance object
+    let utterance = new SpeechSynthesisUtterance();
+
+    // Set the text and voice of the utterance
+    utterance.text = currentWord;
+    utterance.voice = window.speechSynthesis.getVoices()[5];
+
+    // Speak the utterance
+    window.speechSynthesis.speak(utterance);
+});
+
+var apiUrl = `https://api.dictionaryapi.dev/api/v2/entries/en/${encodeURIComponent(currentWord)}`;
 
 fetch(apiUrl)
     .then(response => {
@@ -21,9 +67,12 @@ fetch(apiUrl)
         return response.json();
     })
     .then(result => {
-        console.log(result);
-        console.log(result[0].phonetic);
-        console.log(result[0].word);
+        partOfSpeech.textContent = result[0].meanings[0].partOfSpeech
+        wordDefinition.textContent = result[0].meanings[0].definitions[0].definition
+       transcription.textContent = result[0].phonetic
+        
+
+        console.log(result[0]);
     })
     .catch(error => {
         console.error('Error:', error.message);
