@@ -52,4 +52,26 @@ self.addEventListener('fetch', (event) =>{
   );
 });
 
+//listen for notification click
+self.addEventListener('notificationclick', function (event) {
+  const action = event.action;
+  const title = event.notification.title;
+
+  if (action === 'agree') {
+      clients.matchAll().then(clients => {
+          clients.forEach(client => {
+              client.postMessage({ message: 'So we both agree on that!' });
+          });
+      });
+  } else if (action === 'disagree') {
+      clients.matchAll().then(clients => {
+          clients.forEach(client => {
+              client.postMessage({ message: 'Let\'s agree to disagree.' });
+          });
+      });
+  }
+
+  event.notification.close();
+});
+
 

@@ -13,6 +13,79 @@ if ('serviceWorker' in navigator) {
     console.log("Service workers not supported");
 }
 
+document.addEventListener('DOMContentLoaded', function () {
+    const sendNotifBtn = document.getElementById('sendNotifBtn');
+    
+
+    let isNotificationPermissionGranted = false;
+
+
+    function checkNotificationPermission() {
+        if (Notification.permission === "granted") {
+            isNotificationPermissionGranted = true;
+           
+        } else if (Notification.permission !== "denied") {
+            Notification.requestPermission().then((permission) => {
+                if (permission === "granted") {
+                    isNotificationPermissionGranted = true;
+                    
+                }
+            });
+        }
+    }
+
+    checkNotificationPermission();
+
+   // Request permission on button click
+   sendNotifBtn.addEventListener('click', function () {
+    Notification.requestPermission().then(function (permission) {
+        if (permission === 'granted') {
+            isNotificationPermissionGranted = true;
+        }
+    });
+});
+
+// Show notification on button click
+sendNotifBtn.addEventListener('click', function () {
+    const title = currentWord;  
+    const body = wordDefinition.textContent; 
+
+    if (title === "") {
+        alert("There is no word fetched");
+    } else {
+        const options = {
+            body: body,
+            icon: 'assets/logo-white-bg.png',
+            actions: [
+                {
+                    action: 'agree',
+                    title: 'Agree'
+                },
+                {
+                    action: 'disagree',
+                    title: 'Disagree'
+                }
+            ]
+        };
+
+        // if granted send notification
+        if (isNotificationPermissionGranted) {
+            navigator.serviceWorker.ready.then(function (registration) {
+                registration.showNotification(title, options);
+            });
+        }
+    }
+});
+
+// Your existing code...
+
+// Listen for postMessage
+navigator.serviceWorker.addEventListener('message', (event) => {
+    console.log('Message received from service worker:', event.data.message);
+    displayDiv.innerText = event.data.message;
+});
+});
+
 
 
 
