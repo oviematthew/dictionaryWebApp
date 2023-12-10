@@ -1,3 +1,18 @@
+// Service worker registration
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/service-worker.js', { scope: '/' })
+        .then((registration) => {
+            console.log('Registration successful. Scope is:', registration.scope);
+        })
+        .catch((error) => {
+            console.log('Registration failed. Error:', error);
+        });
+} else {
+    console.log("Service workers not supported");
+}
+
+
+
 // Function to get current date
 function formatDate(date) {
     const options = { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' };
@@ -165,3 +180,11 @@ if (navigator.geolocation) {
     // Display an error message if Geolocation is not supported
     document.getElementById('locationParagraph').textContent = 'Geolocation is not supported by your browser.';
 }
+
+
+
+
+
+
+
+

@@ -1,7 +1,7 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.20.0/firebase-app.js";
 import { getFirestore, collection, addDoc, doc, deleteDoc, getDocs, updateDoc } from "https://www.gstatic.com/firebasejs/9.20.0/firebase-firestore.js";
 
-class wordsDB {
+class wordDB {
     constructor() {
         this.db = null;
         this.isAvailable = false;
@@ -62,6 +62,6 @@ class wordsDB {
     }
 }
 
-const wordsDB = new wordsDB();
+const wordsDB = new wordDB();
 
 export default wordsDB;
