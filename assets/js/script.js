@@ -13,13 +13,14 @@ if ('serviceWorker' in navigator) {
     console.log("Service workers not supported");
 }
 
+//onload of page
 document.addEventListener('DOMContentLoaded', function () {
     const sendNotifBtn = document.getElementById('sendNotifBtn');
     
-
+    //first set notifications to false
     let isNotificationPermissionGranted = false;
 
-
+    //check for notifications
     function checkNotificationPermission() {
         if (Notification.permission === "granted") {
             isNotificationPermissionGranted = true;
@@ -77,7 +78,6 @@ sendNotifBtn.addEventListener('click', function () {
     }
 });
 
-// Your existing code...
 
 // Listen for postMessage
 navigator.serviceWorker.addEventListener('message', (event) => {
@@ -102,7 +102,7 @@ document.getElementById('todaysDate').textContent = formattedDate;
 
 
 
-// Word of the Day function
+// Featured word function
 let englishWords = [
     "apple", "banana", "orange", "grape", "strawberry", "watermelon", "blueberry", "kiwi", "peach", "mango",
     "dog", "cat", "bird", "fish", "rabbit", "hamster", "turtle", "parrot", "snake", "lizard",
@@ -134,7 +134,7 @@ var currentWord = getRandomElement(englishWords)
 word.textContent = currentWord
 var speakBtn = document.getElementById('speakBtn')
 
-// Add an event listener to the speak button
+// Add an event listener to the speak button for pronunciation
 speakBtn.addEventListener("click", function () {
     
     // Create a new SpeechSynthesisUtterance object
@@ -148,10 +148,11 @@ speakBtn.addEventListener("click", function () {
     window.speechSynthesis.speak(utterance);
 });
 
+//base url
 var apiUrl = `https://api.dictionaryapi.dev/api/v2/entries/en/${encodeURIComponent(currentWord)}`;
 
 
-
+//fetch api
 fetch(apiUrl)
     .then(response => {
         if (!response.ok) {
@@ -178,10 +179,10 @@ function updateLocation(position) {
     const latitude = position.coords.latitude;
     const longitude = position.coords.longitude;
 
-    // Use OpenStreetMap Nominatim API to get the location details based on coordinates
+    // Using OpenStreetMap Nominatim API to get the location details based on coordinates
     const apiUrl = `https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}&zoom=18&addressdetails=1`;
 
-    // Make a request to the API
+    // Making a request to the API
     fetch(apiUrl)
         .then(response => response.json())
         .then(data => {
